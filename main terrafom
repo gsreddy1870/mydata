@@ -1,0 +1,27 @@
+provider "aws" {
+  region = "ap-south-1"
+  access_key = ""
+  secret_key = ""
+}
+
+resource "aws_instance" "key" {
+  ami           = "ami-0ad21ae1d0696ad58"
+  instance_type = "t3.micro"
+  count		= 3
+
+  tags = {
+    Name = "HelloWorld"
+  }
+}
+
+==========++++++++++++===========
+
+resource "aws_instance" "key" {
+  ami           = "ami-0ad21ae1d0696ad58"
+  instance_type = "t3.small"
+  no_of_instances = “2”
+
+  tags = {
+    Name = "Dev Tree"
+  }
+}
