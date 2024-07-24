@@ -1,4 +1,4 @@
-sudo apt update
+       sudo apt update
     4  sudo apt upgrade
     5  python3 --version
     6  sudo apt install python3-pip
