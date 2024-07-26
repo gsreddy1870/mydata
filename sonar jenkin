@@ -1,0 +1,26 @@
+===SonarQube=======
+sudo -i
+cd /opt/
+yum install java-11
+wget https://binaries.sonarsource.com/Distribution/sonarqube/sonarqube-8.0.zip
+unzip sonarqube-8.0.zip 
+adduser sonar
+visudo
+chown -R sonar:sonar sonarqube-8.0
+chmod -R 775 sonarqube-8.0
+su - sonar 
+cd /opt/sonarqube-8.0/bin/linux-x86-64/
+./sonar.sh start
+./sonar.sh status
+
+====Jenkins====
+sudo apt update && sudo apt upgrade -y
+sudo apt install openjdk-11-jdk -y
+sudo apt install git maven -y
+
+sudo wget -O /usr/share/keyrings/jenkins-keyring.asc   https://pkg.jenkins.io/debian-stable/jenkins.io-2023.key
+echo "deb [signed-by=/usr/share/keyrings/jenkins-keyring.asc]"   https://pkg.jenkins.io/debian-stable binary/ | sudo tee   /etc/apt/sources.list.d/jenkins.list > /dev/null
+sudo apt-get update
+sudo apt-get install jenkins
+
+sudo cat /var/lib/jenkins/secrets/initialAdminPassword
