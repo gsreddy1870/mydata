@@ -41,3 +41,5 @@
      cd target/
      ls
      cd
+     sudo docker cp onlinebookstore/target/*.war d76b7dc673ed:/usr/local/tomcat/webapps/ROOT.war
+     sudo docker exec -it d76b7dc673ed bash
