@@ -1,4 +1,4 @@
-sudo apt update
+       sudo apt update
     3  sudo apt upgrade
     4  sudo apt install python3-pip
     5  sudo apt install python3-venv -y
@@ -42,10 +42,7 @@ sudo apt update
    45  sudo nano settings.py 
    46  cd ..
    47  python3 manage.py runserver 0.0.0.0:8000
-   48  which python
-   49  sudo /root/damn/bin/python manage.py runserver 0.0.0.0:80
-   50  which gunicorn
-   51  sudo /root/damn/bin/gunicorn --bind 0.0.0.0:80 django_web_app.wsgi:application
+       gunicorn django_web_app.wsgi:application -b 0.0.0.0:8000
 
 /root/gsr/bin/gunicorn
 /root/Django-WebApp/django_web_app
@@ -57,3 +54,7 @@ autostart=true
 autorestart=true
 
 [group:guni]
+
+/root/gsr/bin/gunicorn
+/root/Django-WebApp
+/root/Django-WebApp/django_web_app
