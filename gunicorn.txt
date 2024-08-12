@@ -17,7 +17,6 @@
    18  ls
    19  sudo nano gunicorn.conf
    20  sudo supervisorctl reread
-   21  sudo supervisorctl updtae
    22  sudo supervisorctl update
    23  sudo supervisorctl status
    24  cd
