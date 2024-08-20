@@ -1,0 +1,52 @@
+sudo apt update
+sudo apt upgrade
+sudo apt install python3-pip
+sudo apt install python3-venv -y
+python3 -m venv damn
+source damn/bin/activate
+pip install django
+git clone https://github.com/gsreddy1870/sample1.git
+ls
+cd sample1/django_web_app/
+ls
+pip install gunicorn
+which gunicorn
+pwd
+sudo apt install supervisor
+cd /etc/supervisor/conf.d/
+ls
+sudo nano gunicorn.conf
+==>Paste Below
+[program:gunicorn]
+directory=/root/Django-WebApp/
+command=/root/gsr/bin/gunicorn --workers 3 --bind 8000 unix:/root/Django-WebApp/ django_web_app.wsgi.application
+autostart=true
+autorestart=true
+[group:guni]
+
+sudo supervisorctl reread
+sudo supervisorctl update
+sudo supervisorctl status
+cd
+cd sample1/django_web_app/
+sudo apt install nginx
+cd /etc/nginx/sites-available/
+ls
+nano default 
+sudo service nginx restart 
+sudo service nginx status
+cd
+cd sample1/django_web_app/
+python3 manage.py makemigrations
+pip install django_crispy_forms
+python3 manage.py makemigrations
+pip install pillow
+python3 manage.py makemigrations
+python3 manage.py migrate
+python3 manage.py runserver 0.0.0.0:8000
+cd django_web_app/
+ls
+sudo nano settings.py 
+cd ..
+python3 manage.py runserver 0.0.0.0:8000
+gunicorn django_web_app.wsgi:application -b 0.0.0.0:8000
