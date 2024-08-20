@@ -1,0 +1,64 @@
+sudo -i
+sudo apt update
+sudo apt upgrade -y
+sudo apt install python3-pip
+sudo apt install python3-venv
+python3 -m venv demo
+source demo/bin/activate
+pip install django
+git clone https://github.com/narayana6282/StackOverFlow--Clone.git
+ls
+cd StackOverFlow--Clone
+ls
+sudo apt install libpq-dev
+pip install -r requirements.txt 
+python3 manage.py makemigrations
+python3 manage.py migrate
+python3 manage.py runserver 0.0.0.0:8000
+python3 manage.py collectstatic
+python3 manage.py runserver 0.0.0.0:8000
+sudo apt install nginx
+cd /etc/nginx/sites-enabled/
+ls
+sudo nano nginx.conf
+=> Paste Below
+server {
+    server_name PublicIP;
+    listen 80;
+    listen [::]:80;
+
+    location / {
+        include proxy_params;
+        proxy_pass http://0.0.0.0:8000;
+    }
+}
+
+sudo service nginx restart
+sudo service nginx status
+cd
+ls
+mv StackOverFlow--Clone stack
+ls
+cd stack
+python3 manage.py runserver 0.0.0.0:8000
+sudo apt install gunicorn
+which gunicorn
+pwd
+sudo apt install supervisor
+cd /etc/supervisor/conf.d
+sudo nano gunicorn.conf
+==>Paste Below
+[program:gunicorn]
+directory = /home/ubuntu/stack        
+command =  /home/ubuntu/sai/bin/gunicorn --workers 3 --bind 8000  unix:/home/ubuntu/stack/app.sock main.wsgi.application
+autostart = true
+autorestart = true
+stderr_logfile = /var/log/gunicorn/gunicorn.err.log
+stdout_logfile = /var/log/gunicorn/gunicorn.out.log
+[group : guni]
+
+sudo supervisorctl reread
+sudo supervisorctl update
+sudo supervisorctl status
+python3 manage.py runserver 0.0.0.0:8000
+gunicorn main.wsgi:application -b 0.0.0.0:8000 &
