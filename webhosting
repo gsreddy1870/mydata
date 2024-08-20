@@ -48,8 +48,6 @@
    54  cd
    55  cd stack/
    56  pwd
-   57  
-   58  
    59  sudo nano gunicorn.conf
    60  sudo supervisorctl reread
    61  sudo supervisorctl update
@@ -58,7 +56,7 @@
    64  gunicorn main.wsgi:application -b 0.0.0.0:8000 &
 
 
-script
+====>script<====
 
 [program:gunicorn]
 
