@@ -1,4 +1,4 @@
-===SonarQube=======
+===SonarQube(java-11 only)=======
 sudo -i
 cd /opt/
 yum install java-11
